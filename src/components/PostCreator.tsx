@@ -25,7 +25,10 @@ const PostCreator = ({ user, onCreate }: Props) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (ref.current?.value) onCreate(ref.current.value);
+          if (ref.current?.value) {
+            onCreate(ref.current.value);
+            ref.current.value = "";
+          }
         }}
       >
         <Card>
@@ -77,9 +80,7 @@ const PostCreator = ({ user, onCreate }: Props) => {
           <CardFooter paddingTop="0" paddingBottom="4">
             <HStack justifyContent="right" width="100%">
               <Button
-                onClick={() => {
-                  if (ref.current?.value) onCreate(ref.current.value);
-                }}
+                type="submit"
                 className="create-button"
                 colorScheme="blue"
                 mr={2}
