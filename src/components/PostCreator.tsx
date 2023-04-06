@@ -21,13 +21,13 @@ interface Props {
 const PostCreator = ({ user, onCreate }: Props) => {
   const ref = useRef<HTMLTextAreaElement>(null);
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        if (ref.current?.value) onCreate(ref.current.value);
-      }}
-    >
-      <PostContainer>
+    <PostContainer>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (ref.current?.value) onCreate(ref.current.value);
+        }}
+      >
         <Card>
           <CardHeader paddingBottom="2">
             <HStack gap="1" justifyContent="center">
@@ -89,8 +89,8 @@ const PostCreator = ({ user, onCreate }: Props) => {
             </HStack>
           </CardFooter>
         </Card>
-      </PostContainer>
-    </form>
+      </form>
+    </PostContainer>
   );
 };
 

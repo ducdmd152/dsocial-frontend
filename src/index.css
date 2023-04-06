@@ -1,11 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap");
 
+.aside-left,
+.main,
+.aside-right {
+  overflow: auto;
+  height: 100%;
+  font-family: "DM Sans", sans-serif;
+}
 .create-button {
-    border-radius: 4px;
-    box-shadow: 0 0 20px #1b86f9
+  border-radius: 4px;
+  box-shadow: 0 0 20px #1b86f9;
 }
 
 .input-text {
-    font-family: 'Source Sans Pro', sans-serif;
-    letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 1px;
+}
+
+.logo {
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 4px;
+  text-shadow: 3px 3px 3px #99c2ff, -2px 1px 3px #99c2ff;
+}
+
+.logo:hover {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.11);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
 }

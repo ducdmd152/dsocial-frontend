@@ -4,6 +4,7 @@ import PostCreator from "./components/PostCreator";
 import PostList from "./components/PostList";
 import { useState } from "react";
 import PostArea from "./components/PostArea";
+import AsideLeft from "./components/AsideLeft";
 
 function App() {
   const [user, setUser] = useState({
@@ -26,13 +27,17 @@ function App() {
       h="100%"
     >
       <Show above="lg">
-        <GridItem area="aside-left">Aside left</GridItem>
+        <GridItem area="aside-left" className="aside-left">
+          <AsideLeft />
+        </GridItem>
       </Show>
 
-      <GridItem bg="#24273b" area="main">
+      <GridItem bg="#24273b" area="main" className="main">
         <PostArea user={user} />
       </GridItem>
-      <GridItem area="aside-right">Aside right</GridItem>
+      <GridItem area="aside-right" className="aside-right">
+        Aside right
+      </GridItem>
     </Grid>
   );
 }
