@@ -5,6 +5,7 @@ import PostList from "./components/PostList";
 import { useState } from "react";
 import PostArea from "./components/PostArea";
 import AsideLeft from "./components/AsideLeft";
+import AsideRight from "./components/AsideRight";
 
 function App() {
   const [user, setUser] = useState({
@@ -36,7 +37,7 @@ function App() {
         <PostArea user={user} />
       </GridItem>
       <GridItem area="aside-right" className="aside-right">
-        Aside right
+        <AsideRight />
       </GridItem>
     </Grid>
   );

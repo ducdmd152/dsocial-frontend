@@ -12,6 +12,7 @@ import { BsCalendarEvent } from "react-icons/bs";
 import { CiLogout } from "react-icons/ci";
 import { BiCalendarEvent } from "react-icons/bi";
 import React from "react";
+import AsideBlock from "./AsideBlock";
 
 const AsideMenu = () => {
   const menuItemMap = [
@@ -34,7 +35,7 @@ const AsideMenu = () => {
   ];
   return (
     <>
-      <Box padding="10">
+      <AsideBlock>
         <Heading
           color="gray.500"
           textAlign="left"
@@ -65,7 +66,7 @@ const AsideMenu = () => {
             );
           })}
         </List>
-      </Box>
+      </AsideBlock>
     </>
   );
 };
