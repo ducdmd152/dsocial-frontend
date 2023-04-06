@@ -9,6 +9,7 @@ const PostContainer = ({ children }: Props) => {
   return (
     <Box
       width={{ base: "100%", lg: "600px", xl: "700px" }}
+      maxWidth="100%"
       //   borderRadius={10}
       //   overflow="hidden"
     >

@@ -32,7 +32,7 @@ function App() {
         </GridItem>
       </Show>
 
-      <GridItem bg="#24273b" area="main" className="main">
+      <GridItem area="main" className="main">
         <PostArea user={user} />
       </GridItem>
       <GridItem area="aside-right" className="aside-right">

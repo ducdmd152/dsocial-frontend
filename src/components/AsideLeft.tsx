@@ -1,6 +1,8 @@
 import { Heading } from "@chakra-ui/react";
 import React from "react";
 import AsideMenu from "./AsideMenu";
+import ColorModeSwitch from "./ColorModeSwitch";
+import AsideSetting from "./AsideSettings";
 
 const AsideLeft = () => {
   return (
@@ -10,6 +12,8 @@ const AsideLeft = () => {
       </Heading>
 
       <AsideMenu />
+
+      <AsideSetting />
     </>
   );
 };
