@@ -15,9 +15,16 @@ import {
 import React from "react";
 import PostItem from "./PostItem";
 import useFetchPosts from "../hooks/useFetchPosts";
-
-const PostList = () => {
-  const { entities: posts, error, isLoading } = useFetchPosts();
+import { HttpPost } from "../services/post-service";
+interface Props {
+  fetchPostResult: {
+    posts: HttpPost[];
+    error: string;
+    isLoading: boolean;
+  };
+}
+const PostList = ({ fetchPostResult }: Props) => {
+  const { posts, isLoading, error } = fetchPostResult;
 
   if (error) return null;
 

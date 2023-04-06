@@ -2,8 +2,16 @@ import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
 import "./App.css";
 import PostCreator from "./components/PostCreator";
 import PostList from "./components/PostList";
+import { useState } from "react";
+import PostArea from "./components/PostArea";
 
 function App() {
+  const [user, setUser] = useState({
+    id: 1,
+    username: "duckode",
+    avt: "https://bit.ly/dan-abramov",
+  });
+
   return (
     <Grid
       templateAreas={{
@@ -22,11 +30,7 @@ function App() {
       </Show>
 
       <GridItem bg="#24273b" area="main">
-        <VStack paddingX={3} paddingTop="6">
-          <PostCreator />
-
-          <PostList />
-        </VStack>
+        <PostArea user={user} />
       </GridItem>
       <GridItem area="aside-right">Aside right</GridItem>
     </Grid>

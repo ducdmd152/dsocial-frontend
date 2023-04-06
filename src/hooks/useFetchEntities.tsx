@@ -36,7 +36,7 @@ const useFetchEntities = <E extends HttpEntity>(
     deps ? [...deps] : []
   );
 
-  return { entities, error, isLoading };
+  return { entities, error, isLoading, setEntities, setError };
 };
 
 export default useFetchEntities;

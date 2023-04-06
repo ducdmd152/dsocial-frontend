@@ -9,21 +9,24 @@ export interface Post {
 }
 
 const useFetchPost = () => {
-  const { entities, error, isLoading } = useFetchEntities<HttpPost>(
-    postService,
-    {
-      params: {
-        _sort: "id",
-        _order: "desc",
+  const { entities, error, isLoading, setEntities, setError } =
+    useFetchEntities<HttpPost>(
+      postService,
+      {
+        params: {
+          _sort: "id",
+          _order: "desc",
+        },
       },
-    },
-    []
-  );
+      []
+    );
 
   return {
-    entities,
+    posts: entities,
     error,
     isLoading,
+    setError,
+    setPosts: setEntities,
   };
 };
 
