@@ -1,5 +1,7 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
 import "./App.css";
+import PostCreator from "./components/PostCreator";
+import PostList from "./components/PostList";
 
 function App() {
   return (
@@ -20,7 +22,11 @@ function App() {
       </Show>
 
       <GridItem bg="#24273b" area="main">
-        Main
+        <VStack paddingX={3} paddingTop="6">
+          <PostCreator />
+
+          <PostList />
+        </VStack>
       </GridItem>
       <GridItem area="aside-right">Aside right</GridItem>
     </Grid>
