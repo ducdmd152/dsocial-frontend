@@ -3,14 +3,14 @@ import React from "react";
 import AsideMenu from "./AsideMenu";
 import AsideSetting from "./AsideSettings";
 import UserControl from "./UserControl";
+import MemberList from "./MemberList";
 
 const AsideRight = () => {
   return (
     <>
       <UserControl />
-      <AsideMenu />
 
-      <AsideSetting />
+      <MemberList />
     </>
   );
 };
