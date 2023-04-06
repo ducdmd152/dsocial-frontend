@@ -6,13 +6,12 @@ import { useState } from "react";
 import PostArea from "./components/PostArea";
 import AsideLeft from "./components/AsideLeft";
 import AsideRight from "./components/AsideRight";
+import useGetUser from "./hooks/useGetUser";
 
 function App() {
-  const [user, setUser] = useState({
-    id: 1,
-    username: "duckode",
-    avt: "https://bit.ly/dan-abramov",
-  });
+  const { user, error } = useGetUser(2);
+
+  if (error) return null;
 
   return (
     <Grid
@@ -37,7 +36,7 @@ function App() {
         <PostArea user={user} />
       </GridItem>
       <GridItem area="aside-right" className="aside-right">
-        <AsideRight />
+        <AsideRight user={user} />
       </GridItem>
     </Grid>
   );

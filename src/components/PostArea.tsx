@@ -6,7 +6,7 @@ import PostList from "./PostList";
 import { HttpUser } from "../services/user-service";
 import postService, { HttpPost } from "../services/post-service";
 interface Props {
-  user: HttpUser;
+  user: HttpUser | null;
 }
 const PostArea = ({ user }: Props) => {
   const fetchPostResult = useFetchPosts();
@@ -29,17 +29,19 @@ const PostArea = ({ user }: Props) => {
   return (
     <>
       <VStack paddingX={3} paddingTop="6">
-        <PostCreator
-          user={user}
-          onCreate={(content) =>
-            addPost({
-              id: 0,
-              userId: user.id,
-              content: content,
-              time: new Date(),
-            })
-          }
-        />
+        {user && (
+          <PostCreator
+            user={user}
+            onCreate={(content) =>
+              addPost({
+                id: 0,
+                userId: user.id,
+                content: content,
+                time: new Date(),
+              })
+            }
+          />
+        )}
 
         <PostList fetchPostResult={fetchPostResult} />
       </VStack>

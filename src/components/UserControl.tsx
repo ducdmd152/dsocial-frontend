@@ -10,8 +10,20 @@ import {
 import React from "react";
 import { FiMail } from "react-icons/fi";
 import { MdNotificationsNone } from "react-icons/md";
+import { HttpUser } from "../services/user-service";
 
-const UserControl = () => {
+const UserControl = ({ user }: { user: HttpUser | null }) => {
+  if (!user)
+    return (
+      <HStack
+        paddingX="4"
+        paddingY="4"
+        justifyContent="space-between"
+        color="gray.400"
+      >
+        Login
+      </HStack>
+    );
   return (
     <HStack
       paddingX="4"
@@ -45,11 +57,11 @@ const UserControl = () => {
           }}
         >
           <Show above="lg">
-            <Text>duckode</Text>
+            <Text>{user.username}</Text>
           </Show>
 
           <Box borderRadius="100rem" border="transparent 2px solid">
-            <Avatar src="https://bit.ly/dan-abramov" size="sm" />
+            <Avatar src={user.avt} size="sm" />
           </Box>
         </HStack>
       </Link>

@@ -4,11 +4,14 @@ import AsideMenu from "./AsideMenu";
 import AsideSetting from "./AsideSettings";
 import UserControl from "./UserControl";
 import MemberList from "./MemberList";
-
-const AsideRight = () => {
+import { HttpUser } from "../services/user-service";
+interface Props {
+  user: HttpUser | null;
+}
+const AsideRight = ({ user }: Props) => {
   return (
     <>
-      <UserControl />
+      <UserControl user={user} />
 
       <MemberList />
     </>

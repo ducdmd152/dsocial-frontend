@@ -42,7 +42,9 @@ const PostItem = ({ post }: Props) => {
           </HStack>
         </CardHeader>
         <CardBody paddingTop="1" paddingBottom="5">
-          <Text>{post.content}</Text>
+          {post.content.split("\n").map((line) => (
+            <Text key={Math.random() % 1000}>{line}</Text>
+          ))}
         </CardBody>
       </Card>
     </PostContainer>
