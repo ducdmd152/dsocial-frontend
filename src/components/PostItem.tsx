@@ -8,6 +8,7 @@ import {
   HStack,
   Input,
   InputGroup,
+  Spinner,
   Text,
   Textarea,
   VStack,
@@ -22,13 +23,16 @@ interface Props {
 }
 
 const PostItem = ({ post }: Props) => {
-  const { user } = useGetUser(post.userId);
+  const { user, isLoading, error } = useGetUser(post.userId);
+
+  if (error) return null;
+  if (isLoading) return <Spinner />;
   return (
     <PostContainer>
       <Card width="100%">
         <CardHeader paddingBottom="2">
           <HStack>
-            <Avatar name={user?.username} src={user?.avt} />
+            <Avatar src={user?.avt} />
             <VStack alignItems="start" spacing={0}>
               <Text fontSize={15}>{user?.username}</Text>
               <Text fontSize={12} color="gray" fontStyle="italic">

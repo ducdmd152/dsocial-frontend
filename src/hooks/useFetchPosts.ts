@@ -12,7 +12,10 @@ const useFetchPost = () => {
   const { entities, error, isLoading } = useFetchEntities<HttpPost>(
     postService,
     {
-      params: {},
+      params: {
+        _sort: "id",
+        _order: "desc",
+      },
     },
     []
   );
