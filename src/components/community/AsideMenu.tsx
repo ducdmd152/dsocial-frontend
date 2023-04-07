@@ -41,7 +41,14 @@ const AsideMenu = () => {
                 <HStack spacing={2}>
                   {item.icon}
                   <Button
-                    onClick={() => console.log()}
+                    {...{
+                      onClick: () => {
+                        if (item.label === "Logout") {
+                          sessionStorage.removeItem("user");
+                          window.location.replace("/");
+                        }
+                      },
+                    }}
                     fontSize="xl"
                     variant="link"
                     whiteSpace="normal"

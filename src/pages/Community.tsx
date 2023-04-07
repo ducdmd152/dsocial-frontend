@@ -3,11 +3,17 @@ import AsideLeft from "../components/community/AsideLeft";
 import AsideRight from "../components/community/AsideRight";
 import PostArea from "../components/community/PostArea";
 import useGetUser from "../hooks/useGetUser";
+import { HttpUser } from "../services/user-service";
+import { useEffect, useState } from "react";
 
 function Community() {
-  const { user, error } = useGetUser(2);
+  const [user, setUser] = useState<HttpUser | null>(null);
 
-  if (error) return null;
+  useEffect(() => {
+    const userJSON = sessionStorage.getItem("user");
+    // if (userJSON) console.log(JSON.parse(userJSON));
+    if (userJSON) setUser(JSON.parse(userJSON));
+  }, []);
 
   return (
     <Grid
