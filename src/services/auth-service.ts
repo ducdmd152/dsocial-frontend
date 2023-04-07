@@ -32,10 +32,35 @@ class AuthService {
       email: username + "@dsocial.com",
       password: password,
     };
-    console.log(auth);
 
     return this.apiClient
       .post(this.endpoints.login, auth)
+      .then((response) => {
+        const { accessToken, user } = response.data;
+
+        this.apiClient.defaults.params = {
+          ...this.apiClient.defaults.params,
+          accessToken: accessToken,
+        };
+
+        sessionStorage.setItem("user", JSON.stringify(user));
+
+        return true;
+      })
+      .catch((err) => {
+        return false;
+      });
+  }
+
+  register(username: String, password: String) {
+    let auth = {
+      username,
+      email: username + "@dsocial.com",
+      password: password,
+    };
+
+    return this.apiClient
+      .post(this.endpoints.register, auth)
       .then((response) => {
         const { accessToken, user } = response.data;
 

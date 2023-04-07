@@ -6,7 +6,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
 
-const Login = () => {
+const Register = () => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
     useEffect(() => {
@@ -20,23 +20,29 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm();
 
-  const [loginStatus, setLoginStatus] = useState("");
+  const [registerStatus, setRegisterStatus] = useState("");
 
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   const onSubmit = (data: FieldValues) => {
     const checkLogin = async () => {
-      const { username, password } = data;
+      const { username, password, passwordAgain } = data;
       if (username.length == 0 || password.length == 0) {
-        setLoginStatus("Both username and password are required.");
+        setRegisterStatus("All fields are required.");
         return;
       }
-      let res = await authService.login(username, password);
+
+      if (password !== passwordAgain) {
+        setRegisterStatus("Password is not matched with the confirm.");
+        return;
+      }
+
+      let res = await authService.register(username, password);
       if (res) {
         window.location.replace("/community");
       } else {
-        setLoginStatus("Username or password go to wrong.");
+        setRegisterStatus("Fail to register, try again.");
       }
     };
     checkLogin();
@@ -54,7 +60,8 @@ const Login = () => {
           width="400px"
           maxWidth="100%"
         >
-          <Heading mb={6}>Login</Heading>
+          <Heading mb={6}>Register</Heading>
+
           <Input
             placeholder="Username"
             {...register("username", { required: true })}
@@ -65,28 +72,36 @@ const Login = () => {
 
           <Input
             {...register("password", { required: true })}
-            placeholder="**********"
+            placeholder="Password"
             type="password"
             variant="filled"
-            mb={6}
+            mb={3}
+          />
+
+          <Input
+            {...register("passwordAgain", { required: true })}
+            placeholder="Confirm password"
+            type="password"
+            variant="filled"
+            mb={3}
           />
 
           <Text color="tomato" fontStyle="italic" mt={0} mb={2}>
-            {loginStatus}
+            {registerStatus}
           </Text>
-          <Button colorScheme="teal" mb={8} type="submit">
-            Login
+          <Button colorScheme="teal" mt={3} mb={8} type="submit">
+            Register
           </Button>
 
           <HStack color="gray.400" marginX="auto">
-            <Text>Create a new account?</Text>
+            <Text>Already have an account?</Text>
             <Button
               color="gray.500"
               fontWeight="500"
               variant={"link"}
-              onClick={() => window.location.replace("/register")}
+              onClick={() => window.location.replace("/login")}
             >
-              Register
+              Login
             </Button>
           </HStack>
 
@@ -100,22 +115,10 @@ const Login = () => {
           >
             ---Continue without login---
           </Button>
-
-          {/* <FormControl display="flex" alignItems="center">
-          <FormLabel htmlFor="dark_mode" mb="0">
-            Dark Mode?
-          </FormLabel>
-          <Switch
-            id="dark_mode"
-            colorScheme="teal"
-            size="lg"
-            onChange={toggleColorMode}
-          />
-        </FormControl> */}
         </Flex>
       </form>
     </Flex>
   );
 };
 
-export default Login;
+export default Register;
