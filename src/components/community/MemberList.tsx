@@ -6,12 +6,10 @@ import {
   Show,
   SkeletonCircle,
   SkeletonText,
-  Spinner,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import useFetchUsers, { UserQuery } from "../hooks/useFetchUsers";
+import useFetchUsers, { UserQuery } from "../../hooks/useFetchUsers";
 
 const MemberList = ({ userQuery }: { userQuery: UserQuery }) => {
   const { users, isLoading, error } = useFetchUsers(userQuery);
@@ -35,7 +33,7 @@ const MemberList = ({ userQuery }: { userQuery: UserQuery }) => {
               <Show above="sm">
                 <SkeletonText
                   textAlign="left"
-                  font-size="16"
+                  fontSize="16"
                   noOfLines={1}
                   skeletonHeight="4"
                   width="20"

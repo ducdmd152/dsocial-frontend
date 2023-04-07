@@ -1,21 +1,9 @@
-import {
-  Avatar,
-  Box,
-  HStack,
-  Heading,
-  List,
-  ListItem,
-  VStack,
-  Text,
-  Spinner,
-  Show,
-} from "@chakra-ui/react";
-import AsideBlock from "./AsideBlock";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import useFetchUsers, { UserQuery } from "../hooks/useFetchUsers";
-import SearchUsers from "./SearchUsers";
+import { Box, Heading } from "@chakra-ui/react";
 import { useState } from "react";
+import { UserQuery } from "../../hooks/useFetchUsers";
+import AsideBlock from "./AsideBlock";
 import MemberList from "./MemberList";
+import SearchUsers from "./SearchUsers";
 
 const MemberBlock = () => {
   const [userQuery, setUserQuery] = useState<UserQuery>({

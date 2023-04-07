@@ -1,7 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import AsideLeft from "../components/AsideLeft";
-import AsideRight from "../components/AsideRight";
-import PostArea from "../components/PostArea";
+import AsideLeft from "../components/community/AsideLeft";
+import AsideRight from "../components/community/AsideRight";
+import PostArea from "../components/community/PostArea";
 import useGetUser from "../hooks/useGetUser";
 
 function Community() {

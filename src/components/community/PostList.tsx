@@ -1,21 +1,6 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  HStack,
-  Input,
-  InputGroup,
-  Spinner,
-  Textarea,
-  VStack,
-} from "@chakra-ui/react";
-import React from "react";
+import { Spinner, VStack } from "@chakra-ui/react";
+import { HttpPost } from "../../services/post-service";
 import PostItem from "./PostItem";
-import useFetchPosts from "../hooks/useFetchPosts";
-import { HttpPost } from "../services/post-service";
 interface Props {
   fetchPostResult: {
     posts: HttpPost[];

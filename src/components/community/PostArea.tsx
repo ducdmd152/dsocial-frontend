@@ -1,10 +1,10 @@
 import { VStack } from "@chakra-ui/react";
 import React from "react";
 import PostCreator from "./PostCreator";
-import useFetchPosts from "../hooks/useFetchPosts";
+import useFetchPosts from "../../hooks/useFetchPosts";
 import PostList from "./PostList";
-import { HttpUser } from "../services/user-service";
-import postService, { HttpPost } from "../services/post-service";
+import { HttpUser } from "../../services/user-service";
+import postService, { HttpPost } from "../../services/post-service";
 interface Props {
   user: HttpUser | null;
 }

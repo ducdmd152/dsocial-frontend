@@ -1,10 +1,6 @@
-import { Heading } from "@chakra-ui/react";
-import React from "react";
-import AsideMenu from "./AsideMenu";
-import AsideSetting from "./AsideSettings";
-import UserControl from "./UserControl";
+import { HttpUser } from "../../services/user-service";
 import MemberBlock from "./MemberBlock";
-import { HttpUser } from "../services/user-service";
+import UserControl from "./UserControl";
 interface Props {
   user: HttpUser | null;
 }
