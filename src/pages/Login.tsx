@@ -3,7 +3,7 @@ import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import { Input } from "@chakra-ui/input";
 import { Flex, HStack, Heading, Text } from "@chakra-ui/layout";
 import { FieldValues, useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
 
 const Login = () => {
@@ -14,16 +14,29 @@ const Login = () => {
     });
   }
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm();
+
+  const [loginStatus, setLoginStatus] = useState("");
 
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   const onSubmit = (data: FieldValues) => {
     const checkLogin = async () => {
-      let res = await authService.login(data.username, data.password);
+      const { username, password } = data;
+      if (username.length == 0 || password.length == 0) {
+        setLoginStatus("Both username and password are required.");
+        return;
+      }
+      let res = await authService.login(username, password);
       if (res) {
         window.location.replace("/community");
+      } else {
+        setLoginStatus("Username or password go to wrong.");
       }
     };
     checkLogin();
@@ -44,18 +57,23 @@ const Login = () => {
           <Heading mb={6}>Login</Heading>
           <Input
             placeholder="Username"
-            {...register("username")}
+            {...register("username", { required: true })}
             type="text"
             variant="filled"
             mb={3}
           />
+
           <Input
-            {...register("password")}
+            {...register("password", { required: true })}
             placeholder="**********"
             type="password"
             variant="filled"
             mb={6}
           />
+
+          <Text color="tomato" fontStyle="italic" mt={0} mb={2}>
+            {loginStatus}
+          </Text>
           <Button colorScheme="teal" mb={8} type="submit">
             Login
           </Button>
