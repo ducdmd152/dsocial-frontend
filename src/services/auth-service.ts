@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
 import apiClient from "./api-client";
+import avatarService from "./avatar-service";
 
 interface AuthEndpoints {
   login: string;
@@ -10,6 +11,7 @@ export interface Auth {
   usename: string;
   email: string;
   password: string;
+  avt?: string;
 }
 
 class AuthService {
@@ -52,11 +54,12 @@ class AuthService {
       });
   }
 
-  register(username: String, password: String) {
+  register(username: String, password: String, isMale: boolean) {
     let auth = {
       username,
       email: username + "@dsocial.com",
       password: password,
+      avt: avatarService.getRandomAvatar(isMale),
     };
 
     return this.apiClient

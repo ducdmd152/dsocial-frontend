@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="community" element={<Community />} />
         </Route>

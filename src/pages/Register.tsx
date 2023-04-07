@@ -5,6 +5,7 @@ import { Flex, HStack, Heading, Text } from "@chakra-ui/layout";
 import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
+import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 
 const Register = () => {
   let authenticated = sessionStorage.getItem("user");
@@ -26,8 +27,8 @@ const Register = () => {
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
   const onSubmit = (data: FieldValues) => {
-    const checkLogin = async () => {
-      const { username, password, passwordAgain } = data;
+    const checkRegister = async () => {
+      const { username, password, passwordAgain, gender } = data;
       if (username.length == 0 || password.length == 0) {
         setRegisterStatus("All fields are required.");
         return;
@@ -38,14 +39,19 @@ const Register = () => {
         return;
       }
 
-      let res = await authService.register(username, password);
+      let res = await authService.register(
+        username,
+        password,
+        gender === "male"
+      );
+
       if (res) {
         window.location.replace("/community");
       } else {
         setRegisterStatus("Fail to register, try again.");
       }
     };
-    checkLogin();
+    checkRegister();
   };
 
   return (
@@ -85,6 +91,16 @@ const Register = () => {
             variant="filled"
             mb={3}
           />
+          <RadioGroup defaultValue="male" fontStyle="italic" marginX="auto">
+            <Stack spacing={4} direction="row">
+              <Radio value="male" {...register("gender")}>
+                Male
+              </Radio>
+              <Radio value="female" {...register("gender")}>
+                Female
+              </Radio>
+            </Stack>
+          </RadioGroup>
 
           <Text color="tomato" fontStyle="italic" mt={0} mb={2}>
             {registerStatus}
