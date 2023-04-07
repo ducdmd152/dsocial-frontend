@@ -1,17 +1,23 @@
 import userService, { HttpUser } from "../services/user-service";
 import useFetchEntities from "./useFetchEntities";
+export interface UserQuery {
+  sort: string;
+  order: string;
+  searchText: string;
+}
 
-const useFetchUsers = () => {
+const useFetchUsers = (userQuery: UserQuery) => {
   const { entities, error, isLoading, setEntities, setError } =
     useFetchEntities<HttpUser>(
       userService,
       {
         params: {
-          _sort: "id",
-          _order: "asc",
+          _sort: userQuery.sort,
+          _order: userQuery.order,
+          username_like: userQuery.searchText,
         },
       },
-      []
+      [userQuery]
     );
 
   return {
