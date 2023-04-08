@@ -23,7 +23,7 @@ function Community({ setRoute }: { setRoute: (route: string) => void }) {
       }}
       templateColumns={{
         base: `1fr 140px`,
-        sm: `60px 1fr 200px`,
+        sm: `60px 1fr 180px`,
         md: `80px 1fr 200px`,
         lg: "240px 1fr 240px",
       }}
