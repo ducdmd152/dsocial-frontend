@@ -45,7 +45,7 @@ const AsideMenu = () => {
                       onClick: () => {
                         if (item.label === "Logout") {
                           sessionStorage.removeItem("user");
-                          window.location.replace("/");
+                          window.location.reload();
                         }
                       },
                     }}

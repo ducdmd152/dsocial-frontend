@@ -10,9 +10,11 @@ import authService from "../services/auth-service";
 const Login = ({ setRoute }: { setRoute: (route: string) => void }) => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
-    useEffect(() => {
-      setTimeout(() => setRoute("community"), 100);
-    });
+    setRoute("community");
+    return null;
+    // useEffect(() => {
+    //   setTimeout(() => setRoute("community"), 100);
+    // });
   }
 
   const {

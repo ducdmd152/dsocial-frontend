@@ -11,9 +11,11 @@ import devConfig from "../../devConfig";
 const Register = ({ setRoute }: { setRoute: (route: string) => void }) => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
-    useEffect(() => {
-      setTimeout(() => setRoute("community"), 50);
-    });
+    setRoute("community");
+    return null;
+    // useEffect(() => {
+    //   setTimeout(() => setRoute("community"), 100);
+    // });
   }
 
   const {
