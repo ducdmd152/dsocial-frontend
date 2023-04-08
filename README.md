@@ -1,9 +1,7 @@
-
-
-
 #  DSocial Network | Frontend
 ### Author: **[Duc Dao](https://beacons.ai/ducdmd152)**
 ### Released versions: [ Dsocial Frontend Releases](https://github.com/ducdmd152/dsocial-frontend/releases/)
+
 --------------------------------------------------
 ## Table of Contents
 - [Description](#description)
@@ -15,7 +13,7 @@
 ## Description
 
  - A simple social network.
- - Supports a few basic functions such as register, creating post, find members,...
+ - Supports a few basic functions such as registering, creating posts, find members,...
 
 ## Live Demo: https://ducdmd152.github.io/dsocial-frontend/ 
 
@@ -30,7 +28,7 @@
 
 - **Download the source code.**:
 
-- **To run with dev mode, let's run "`npm run dev`" in command line.**
+- **To run with dev mode, let's run "`npm run dev`" in the command line.**
 - *You also can explore more at https://create-react-app.dev/docs/getting-started/*
 
 ## License & Copyright
