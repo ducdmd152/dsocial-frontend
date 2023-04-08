@@ -69,3 +69,15 @@
 .member-list-box *::-webkit-scrollbar {
   width: 0px;
 }
+
+@media (max-width: 767px) {
+  .aside-left-icon {
+    scale: 1.2;
+  }
+}
+
+@media (max-width: 991px) {
+  .aside-left-icon {
+    scale: 1.4;
+  }
+}

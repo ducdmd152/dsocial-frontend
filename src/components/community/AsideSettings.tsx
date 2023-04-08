@@ -4,6 +4,7 @@ import {
   Heading,
   List,
   ListItem,
+  Show,
 } from "@chakra-ui/react";
 import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
@@ -12,14 +13,16 @@ import AsideBlock from "./AsideBlock";
 const AsideSetting = () => {
   return (
     <AsideBlock>
-      <Heading
-        color="gray.500"
-        textAlign="left"
-        fontSize="2xl"
-        marginBottom={3}
-      >
-        Settings
-      </Heading>
+      <Show above="lg">
+        <Heading
+          color="gray.500"
+          textAlign="left"
+          fontSize="2xl"
+          marginBottom={3}
+        >
+          Settings
+        </Heading>
+      </Show>
       <List>
         <ListItem>
           <ColorModeSwitch />
