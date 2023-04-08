@@ -70,6 +70,12 @@
   width: 0px;
 }
 
+@media (max-width: 575px) {
+  .aside-left-icon {
+    scale: 1;
+  }
+}
+
 @media (max-width: 767px) {
   .aside-left-icon {
     scale: 1.2;

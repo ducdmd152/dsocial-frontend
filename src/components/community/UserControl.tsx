@@ -5,6 +5,7 @@ import {
   HStack,
   Link,
   Show,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import { FiMail } from "react-icons/fi";
@@ -24,16 +25,27 @@ const UserControl = ({ user }: { user: HttpUser | null }) => {
       </HStack>
     );
   return (
-    <HStack
+    <Stack
+      direction={["column-reverse", "row"]}
       paddingX="4"
       paddingY="4"
-      justifyContent="space-between"
+      justifyContent={{
+        base: "space-around",
+        sm: "space-between",
+      }}
+      alignItems={{
+        base: "center",
+      }}
       color="gray.400"
     >
       <Button
         variant={"unstyled"}
         _hover={{
           color: "blue.300",
+        }}
+        paddingLeft={{
+          base: "1",
+          md: 0,
         }}
       >
         <FiMail color="gray400" size="28px" />
@@ -42,6 +54,10 @@ const UserControl = ({ user }: { user: HttpUser | null }) => {
         variant={"unstyled"}
         _hover={{
           color: "blue.300",
+        }}
+        paddingLeft={{
+          base: "0.5",
+          md: 0,
         }}
       >
         <MdNotificationsNone size="34px" fontWeight="bold" />
@@ -54,6 +70,10 @@ const UserControl = ({ user }: { user: HttpUser | null }) => {
             filter: "brightness(1.1)",
             transition: "all 0.25s ease-in-out",
           }}
+          justifyContent={{
+            base: "space-around",
+            sm: "space-between",
+          }}
         >
           <Show above="lg">
             <Text>{user.username}</Text>
@@ -64,7 +84,7 @@ const UserControl = ({ user }: { user: HttpUser | null }) => {
           </Box>
         </HStack>
       </Link>
-    </HStack>
+    </Stack>
   );
 };
 
