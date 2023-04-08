@@ -10,7 +10,8 @@ import userService from "../services/user-service";
 import { CanceledError } from "axios";
 import devConfig from "../../devConfig";
 
-const successDirectPath = devConfig.base + "/community";
+const successDirectPath =
+  window.location.origin + "/" + devConfig.base + "/community";
 
 const Login = () => {
   let authenticated = sessionStorage.getItem("user");

@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import devConfig from "../../devConfig";
-const successDirectPath = devConfig.base + "/community";
+const successDirectPath =
+  window.location.origin + "/" + devConfig.base + "/community";
 const Register = () => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
