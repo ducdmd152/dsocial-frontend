@@ -3,15 +3,18 @@ import "./App.css";
 import Community from "./pages/Community";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import devConfig from "../devConfig";
+
 function App() {
+  const base = devConfig.base;
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path={base}>
           <Route index element={<Login />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="community" element={<Community />} />
+          <Route path={"login"} element={<Login />} />
+          <Route path={"register"} element={<Register />} />
+          <Route path={"community"} element={<Community />} />
         </Route>
       </Routes>
     </BrowserRouter>

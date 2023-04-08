@@ -6,12 +6,13 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
-
+import devConfig from "../../devConfig";
+const successDirectPath = devConfig.base + "/community";
 const Register = () => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
     useEffect(() => {
-      setTimeout(() => window.location.replace("/community"), 100);
+      setTimeout(() => window.location.replace(successDirectPath), 50);
     });
   }
 
@@ -46,7 +47,7 @@ const Register = () => {
       );
 
       if (res) {
-        window.location.replace("/community");
+        window.location.replace(successDirectPath);
       } else {
         setRegisterStatus("Fail to register, try again.");
       }
@@ -127,7 +128,7 @@ const Register = () => {
             fontWeight="300"
             fontStyle="italic"
             variant={"link"}
-            onClick={() => window.location.replace("/community")}
+            onClick={() => window.location.replace(successDirectPath)}
           >
             ---Continue without login---
           </Button>

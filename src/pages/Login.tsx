@@ -8,12 +8,15 @@ import authService from "../services/auth-service";
 import useGetUser from "../hooks/useGetUser";
 import userService from "../services/user-service";
 import { CanceledError } from "axios";
+import devConfig from "../../devConfig";
+
+const successDirectPath = devConfig.base + "/community";
 
 const Login = () => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
     useEffect(() => {
-      setTimeout(() => window.location.replace("/community"), 100);
+      setTimeout(() => window.location.replace(successDirectPath), 100);
     });
   }
 
@@ -40,7 +43,7 @@ const Login = () => {
       };
       if (username === guest.username && password === guest.password) {
         sessionStorage.setItem("user", JSON.stringify(guest));
-        window.location.replace("/community");
+        window.location.replace(successDirectPath);
         return;
       }
 
@@ -51,7 +54,7 @@ const Login = () => {
       }
       let res = await authService.login(username, password);
       if (res) {
-        window.location.replace("/community");
+        window.location.replace(successDirectPath);
       } else {
         setLoginStatus("Username or password go to wrong.");
       }
@@ -113,7 +116,7 @@ const Login = () => {
             fontWeight="300"
             fontStyle="italic"
             variant={"link"}
-            onClick={() => window.location.replace("/community")}
+            onClick={() => window.location.replace(successDirectPath)}
           >
             ---Continue without login---
           </Button>
