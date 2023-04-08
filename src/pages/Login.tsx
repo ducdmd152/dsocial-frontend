@@ -5,6 +5,9 @@ import { Flex, HStack, Heading, Text } from "@chakra-ui/layout";
 import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
+import useGetUser from "../hooks/useGetUser";
+import userService from "../services/user-service";
+import { CanceledError } from "axios";
 
 const Login = () => {
   let authenticated = sessionStorage.getItem("user");
@@ -28,6 +31,20 @@ const Login = () => {
   const onSubmit = (data: FieldValues) => {
     const checkLogin = async () => {
       const { username, password } = data;
+
+      // allow guest
+      const guest = {
+        id: 12,
+        username: "guest",
+        password: "123456",
+      };
+      if (username === guest.username && password === guest.password) {
+        sessionStorage.setItem("user", JSON.stringify(guest));
+        window.location.replace("/community");
+        return;
+      }
+
+      // check real users
       if (username.length == 0 || password.length == 0) {
         setLoginStatus("Both username and password are required.");
         return;

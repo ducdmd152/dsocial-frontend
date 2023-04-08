@@ -17,6 +17,8 @@ interface Props {
 }
 
 const PostCreator = ({ user, onCreate }: Props) => {
+  console.log(user);
+
   const ref = useRef<HTMLTextAreaElement>(null);
   return (
     <PostContainer>
