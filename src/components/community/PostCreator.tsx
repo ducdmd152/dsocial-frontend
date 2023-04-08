@@ -6,19 +6,19 @@ import {
   CardFooter,
   CardHeader,
   HStack,
-  Input,
-  InputGroup,
   Textarea,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import { useRef } from "react";
+import { HttpUser } from "../../services/user-service";
 import PostContainer from "./PostContainer";
-import { HttpUser } from "../services/user-service";
 interface Props {
   user: HttpUser;
   onCreate: (content: string) => void;
 }
 
 const PostCreator = ({ user, onCreate }: Props) => {
+  console.log(user);
+
   const ref = useRef<HTMLTextAreaElement>(null);
   return (
     <PostContainer>

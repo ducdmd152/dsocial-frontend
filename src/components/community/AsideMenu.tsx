@@ -1,17 +1,7 @@
-import {
-  Box,
-  Button,
-  HStack,
-  Heading,
-  List,
-  ListItem,
-  VStack,
-} from "@chakra-ui/react";
-import { AiFillTags, AiOutlineHome, AiOutlineTag } from "react-icons/ai";
-import { BsCalendarEvent } from "react-icons/bs";
-import { CiLogout } from "react-icons/ci";
+import { Button, HStack, Heading, List, ListItem } from "@chakra-ui/react";
+import { AiOutlineHome, AiOutlineTag } from "react-icons/ai";
 import { BiCalendarEvent } from "react-icons/bi";
-import React from "react";
+import { CiLogout } from "react-icons/ci";
 import AsideBlock from "./AsideBlock";
 
 const AsideMenu = () => {
@@ -51,7 +41,14 @@ const AsideMenu = () => {
                 <HStack spacing={2}>
                   {item.icon}
                   <Button
-                    onClick={() => console.log()}
+                    {...{
+                      onClick: () => {
+                        if (item.label === "Logout") {
+                          sessionStorage.removeItem("user");
+                          window.location.replace("/");
+                        }
+                      },
+                    }}
                     fontSize="xl"
                     variant="link"
                     whiteSpace="normal"

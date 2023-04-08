@@ -3,14 +3,13 @@ import {
   Box,
   Button,
   HStack,
-  Text,
   Link,
   Show,
+  Text,
 } from "@chakra-ui/react";
-import React from "react";
 import { FiMail } from "react-icons/fi";
 import { MdNotificationsNone } from "react-icons/md";
-import { HttpUser } from "../services/user-service";
+import { HttpUser } from "../../services/user-service";
 
 const UserControl = ({ user }: { user: HttpUser | null }) => {
   if (!user)

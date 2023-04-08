@@ -1,23 +1,16 @@
 import {
   Avatar,
-  Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   HStack,
-  Input,
-  InputGroup,
   Spinner,
   Text,
-  Textarea,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import useGetUser from "../../hooks/useGetUser";
+import { HttpPost } from "../../services/post-service";
 import PostContainer from "./PostContainer";
-import { Post } from "../hooks/useFetchPosts";
-import { HttpPost } from "../services/post-service";
-import useGetUser from "../hooks/useGetUser";
 interface Props {
   post: HttpPost;
 }

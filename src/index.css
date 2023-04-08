@@ -4,9 +4,12 @@
   box-shadow: #92bdeb 1px solid;
 }
 .aside-left,
+.main {
+  overflow: auto;
+}
+.aside-left,
 .main,
 .aside-right {
-  overflow: auto;
   height: 100%;
   font-family: "DM Sans", sans-serif;
 }
@@ -51,4 +54,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+.scrollable-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scrollable-child {
+  overflow-y: auto;
+}
+
+.member-list-box *::-webkit-scrollbar {
+  width: 0px;
 }
