@@ -7,13 +7,12 @@ import { useEffect, useState } from "react";
 import authService from "../services/auth-service";
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import devConfig from "../../devConfig";
-const successDirectPath =
-  window.location.origin + "/" + devConfig.base + "/community";
-const Register = () => {
+
+const Register = ({ setRoute }: { setRoute: (route: string) => void }) => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
     useEffect(() => {
-      setTimeout(() => window.location.replace(successDirectPath), 50);
+      setTimeout(() => setRoute("community"), 50);
     });
   }
 
@@ -48,7 +47,7 @@ const Register = () => {
       );
 
       if (res) {
-        window.location.replace(successDirectPath);
+        setRoute("community");
       } else {
         setRegisterStatus("Fail to register, try again.");
       }
@@ -117,7 +116,7 @@ const Register = () => {
               color="gray.500"
               fontWeight="500"
               variant={"link"}
-              onClick={() => window.location.replace("/login")}
+              onClick={() => setRoute("login")}
             >
               Login
             </Button>
@@ -129,7 +128,7 @@ const Register = () => {
             fontWeight="300"
             fontStyle="italic"
             variant={"link"}
-            onClick={() => window.location.replace(successDirectPath)}
+            onClick={() => setRoute("community")}
           >
             ---Continue without login---
           </Button>

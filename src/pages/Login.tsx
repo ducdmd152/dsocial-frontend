@@ -2,22 +2,16 @@ import { Button } from "@chakra-ui/button";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import { Input } from "@chakra-ui/input";
 import { Flex, HStack, Heading, Text } from "@chakra-ui/layout";
-import { FieldValues, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import authService from "../services/auth-service";
-import useGetUser from "../hooks/useGetUser";
-import userService from "../services/user-service";
-import { CanceledError } from "axios";
+import { FieldValues, useForm } from "react-hook-form";
 import devConfig from "../../devConfig";
+import authService from "../services/auth-service";
 
-const successDirectPath =
-  window.location.origin + "/" + devConfig.base + "/community";
-
-const Login = () => {
+const Login = ({ setRoute }: { setRoute: (route: string) => void }) => {
   let authenticated = sessionStorage.getItem("user");
   if (authenticated) {
     useEffect(() => {
-      setTimeout(() => window.location.replace(successDirectPath), 100);
+      setTimeout(() => setRoute("community"), 100);
     });
   }
 
@@ -44,7 +38,7 @@ const Login = () => {
       };
       if (username === guest.username && password === guest.password) {
         sessionStorage.setItem("user", JSON.stringify(guest));
-        window.location.replace(successDirectPath);
+        setRoute("community");
         return;
       }
 
@@ -55,7 +49,7 @@ const Login = () => {
       }
       let res = await authService.login(username, password);
       if (res) {
-        window.location.replace(successDirectPath);
+        setRoute("community");
       } else {
         setLoginStatus("Username or password go to wrong.");
       }
@@ -105,7 +99,7 @@ const Login = () => {
               color="gray.500"
               fontWeight="500"
               variant={"link"}
-              onClick={() => window.location.replace("/register")}
+              onClick={() => setRoute("register")}
             >
               Register
             </Button>
@@ -117,7 +111,7 @@ const Login = () => {
             fontWeight="300"
             fontStyle="italic"
             variant={"link"}
-            onClick={() => window.location.replace(successDirectPath)}
+            onClick={() => setRoute("community")}
           >
             ---Continue without login---
           </Button>

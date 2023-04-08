@@ -6,7 +6,7 @@ import useGetUser from "../hooks/useGetUser";
 import { HttpUser } from "../services/user-service";
 import { useEffect, useState } from "react";
 
-function Community() {
+function Community({ setRoute }: { setRoute: (route: string) => void }) {
   const [user, setUser] = useState<HttpUser | null>(null);
 
   useEffect(() => {

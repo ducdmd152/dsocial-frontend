@@ -4,21 +4,18 @@ import Community from "./pages/Community";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import devConfig from "../devConfig";
+import { useState } from "react";
 
+const Router = {
+  map: {},
+};
 function App() {
-  const base = devConfig.base;
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={base}>
-          <Route index element={<Login />} />
-          <Route path={"login"} element={<Login />} />
-          <Route path={"register"} element={<Register />} />
-          <Route path={"community"} element={<Community />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  const [route, setRoute] = useState("home");
+
+  if (route === "home") return <Login setRoute={setRoute} />;
+  if (route === "login") return <Login setRoute={setRoute} />;
+  if (route === "register") return <Register setRoute={setRoute} />;
+  if (route === "community") return <Community setRoute={setRoute} />;
   // const { user, error } = useGetUser(2);
   // if (error) return null;
   // return (
