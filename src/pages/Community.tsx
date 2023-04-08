@@ -18,16 +18,18 @@ function Community({ setRoute }: { setRoute: (route: string) => void }) {
     <Grid
       templateAreas={{
         base: `"main aside-right"`,
+        sm: `"aside-left main aside-right"`,
         lg: `"aside-left main aside-right"`,
       }}
       templateColumns={{
-        base: `1fr 140px`,
-        sm: `1fr 200px`,
+        base: `1fr 60px`,
+        sm: `60px 1fr 180px`,
+        md: `80px 1fr 200px`,
         lg: "240px 1fr 240px",
       }}
       h="100%"
     >
-      <Show above="lg">
+      <Show above="sm">
         <GridItem area="aside-left" className="aside-left">
           <AsideLeft />
         </GridItem>

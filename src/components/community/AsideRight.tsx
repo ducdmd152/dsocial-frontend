@@ -1,3 +1,4 @@
+import { Show } from "@chakra-ui/react";
 import { HttpUser } from "../../services/user-service";
 import MemberBlock from "./MemberBlock";
 import UserControl from "./UserControl";
@@ -7,7 +8,9 @@ interface Props {
 const AsideRight = ({ user }: Props) => {
   return (
     <>
+      {/* <Show above="sm"> */}
       <UserControl user={user} />
+      {/* </Show> */}
 
       <MemberBlock />
     </>

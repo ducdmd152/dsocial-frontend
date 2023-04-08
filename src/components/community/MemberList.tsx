@@ -28,7 +28,12 @@ const MemberList = ({ userQuery }: { userQuery: UserQuery }) => {
       >
         {skeletons.map((skeleton) => (
           <ListItem marginBottom={6} key={skeleton}>
-            <HStack justifyContent="space-between">
+            <HStack
+              justifyContent={{
+                base: "space-around",
+                sm: "space-between",
+              }}
+            >
               <SkeletonCircle size="10" />
               <Show above="sm">
                 <SkeletonText
@@ -52,12 +57,21 @@ const MemberList = ({ userQuery }: { userQuery: UserQuery }) => {
         base: 6,
         lg: 10,
       }}
-      maxHeight="calc(100vh - 270px)"
+      maxHeight={{
+        base: "calc(100vh - 200px)",
+        md: "calc(100vh - 200px)",
+        lg: "calc(100vh - 270px)",
+      }}
       overflow="auto"
     >
       {users.map((user) => (
         <ListItem marginBottom={6} key={user.id}>
-          <HStack justifyContent="space-between">
+          <HStack
+            justifyContent={{
+              base: "space-around",
+              sm: "space-between",
+            }}
+          >
             <Avatar src={user.avt} size="md" />
             <Show above="sm">
               <Text fontSize={16}>{user.username}</Text>
