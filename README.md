@@ -13,7 +13,7 @@
 ## Description
 
  - A simple social network.
- - Supports a few basic functions such as registering, creating posts, find members,...
+ - Supports a few basic features such as registering, creating posts, and finding members,...
 
 ## Live Demo: https://ducdmd152.github.io/dsocial-frontend/ 
 
