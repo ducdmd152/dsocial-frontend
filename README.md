@@ -34,4 +34,4 @@
 ## License & Copyright
 &copy; 2023 Duc Dao ducdmd152 Licensed under the [GNU LICENSE](https://github.com/ducdmd152/dsocial-frontend/blob/main/LICENSE).
 
-> 🤟 Feel free to use my repository and star it if you find something interesting 🤟
+> 🤟 Take a star if you find something interesting 🤟
